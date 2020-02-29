@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawPicker", "DrawPicker\DrawPicker.csproj", "{771F7BD3-F041-4134-82CF-713D3616F7A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{771F7BD3-F041-4134-82CF-713D3616F7A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{771F7BD3-F041-4134-82CF-713D3616F7A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{771F7BD3-F041-4134-82CF-713D3616F7A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{771F7BD3-F041-4134-82CF-713D3616F7A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C63A91D-0954-4A55-B261-6F1E8FC26FD1}
+	EndGlobalSection
+EndGlobal
