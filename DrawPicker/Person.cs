@@ -10,12 +10,13 @@ namespace DrawPicker
 
     class Person
     {
+        private static int cumulativeId = 0;
         private int id;
         private String name;
 
-        public Person(int id, string name)
+        public Person(string name)
         {
-            this.Id = id;
+            this.Id = ++cumulativeId;
             this.Name = name;
         }
 

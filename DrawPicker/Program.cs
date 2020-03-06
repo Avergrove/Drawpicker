@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DrawPicker
 {
@@ -10,8 +6,8 @@ namespace DrawPicker
     {
         static void Main(string[] args)
         {
-            DrawPicker picker = new DrawPicker();
-            int id = 0;
+            EntryCatalogue entryCatalogue = new EntryCatalogue();
+            DrawPicker picker = new DrawPicker(entryCatalogue);
 
             Console.WriteLine(DialogueFetcher.GetText("intro"));
             Console.WriteLine(DialogueFetcher.GetText("help"));
@@ -19,45 +15,38 @@ namespace DrawPicker
             while (true)
             {
                 Console.Write("> ");
-                String[] input = Console.ReadLine().Split(' ');
-                String command = input[0].ToLower();
-                if (command.Equals("roll"))
-                {
-                    Console.WriteLine("\nPrinting results...");
-                    picker.PrintResults();
-                    Console.WriteLine("\nSalty? Type in 'roll' to reroll again!\n");
-                }
+                String[] inputs = Console.ReadLine().Split(' ');
+                String command = inputs[0].ToLower();
 
-                else if(command.Equals("add"))
+                switch (command)
                 {
-                    Person person = new Person(id++, input[1]);
-                    picker.AddEntry(new Entry(person));
-                    Console.WriteLine(String.Format("{0} has been added\n", person.Name));
-                }
+                    case CommandConstants.ADD_ENTRY:
+                        Person person = new Person(inputs[1]);
+                        entryCatalogue.AddEntry(new Entry(person));
+                        Console.WriteLine(String.Format("{0} has been added\n", person.Name));
+                        break;
 
-                else if (command.Equals("dick"))
-                {
-                    foreach(Entry entry in picker.Entries)
-                    {
-                        int dickLength = DickSizeHasher.getDickSizeFromString(entry.Person.Name);
-                        Console.WriteLine(String.Format("{0}'s dick size is {1} inches", entry.Person.Name, dickLength));
-                        Console.WriteLine(DickSizeHasher.getDickSizeAsAscii(dickLength));
-                    }
-                }
+                    case CommandConstants.ROLL_RESULTS:
+                        Console.WriteLine("\nPrinting results...");
+                        picker.PrintResults();
+                        Console.WriteLine("\nSalty? Type in 'roll' to reroll again!\n");
+                        break;
 
-                else if (command.Equals("help"))
-                {
-                    Console.Write(DialogueFetcher.GetText("help"));
-                }
+                    case CommandConstants.DICK_SIZE:
+                        foreach (Entry entry in entryCatalogue.Entries)
+                        {
+                            int dickLength = DickSizeHasher.getDickSizeFromString(entry.Person.Name);
+                            Console.WriteLine(String.Format("{0}'s dick size is {1} inches", entry.Person.Name, dickLength));
+                            Console.WriteLine(DickSizeHasher.getDickSizeAsAscii(dickLength));
+                        }
+                        break;
 
-                else if (command.Equals("exit"))
-                {
-                    break;
-                }
+                    case CommandConstants.EXIT:
+                        return;
 
-                else
-                {
-                    Console.WriteLine("Command not found, type in 'help' for a list of commands");
+                    default:
+                        Console.WriteLine(DialogueFetcher.GetText("invalid command"));
+                        break;
                 }
             }
         }

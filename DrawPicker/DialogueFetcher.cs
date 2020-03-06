@@ -16,7 +16,7 @@ namespace DrawPicker
 
 ====================================================
 |                                                    
-|    Draw Picker                                     
+|    Draw Picker 1.1 
 |    Written by Avergrove, please send any feedback
 |    to Avergrove@gmail.com, thank you!
 |                                                   
@@ -35,6 +35,11 @@ namespace DrawPicker
     
     exit: Closes the software.
 ";
+            }
+
+            else if(key.Equals("invalid command"))
+            {
+                return $@"Command not found, type in 'help' for a list of commands\n";
             }
 
             return "";

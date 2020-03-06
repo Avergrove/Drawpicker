@@ -58,10 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandConstants.cs" />
     <Compile Include="DialogueFetcher.cs" />
     <Compile Include="DickSizeHasher.cs" />
     <Compile Include="DrawPicker.cs" />
     <Compile Include="Entry.cs" />
+    <Compile Include="EntryCatalogue.cs" />
     <Compile Include="Pair.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />

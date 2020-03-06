@@ -4,35 +4,15 @@ using System.Linq;
 
 namespace DrawPicker
 {
-
-
     class DrawPicker
     {
-        private List<Entry> entries;
+        EntryCatalogue catalogue;
 
-        internal List<Entry> Entries { get => entries; set => entries = value; }
-
-        public DrawPicker()
+        public DrawPicker(EntryCatalogue catalogue)
         {
-            Entries = new List<Entry>();
+            this.catalogue = catalogue;
         }
 
-        public void AddEntry(Entry entry)
-        {
-            Entries.Add(entry);
-        }
-
-        private void MoveEntry(Entry entry, List<Entry> sourceEntry, List<Entry> targetEntry)
-        {
-            sourceEntry.Remove(entry);
-            targetEntry.Add(entry);
-        }
-
-        /// <summary>
-        /// Copies references of all entries from sourceEntry to targetEntry
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="target"></param>
         private void CopyEntries(List<Entry> source, List<Entry> target)
         {
             target.Clear();
@@ -49,11 +29,8 @@ namespace DrawPicker
             List<Entry> availableTargets = new List<Entry>(); // Keeps tracks of people to be drawn.
             List<Pair<Entry>> results = new List<Pair<Entry>>();
 
-            Entry lastTarget = null;
-
-            this.CopyEntries(Entries, availableArtists);
-            this.CopyEntries(Entries, availableTargets);
-
+            this.CopyEntries(catalogue.Entries, availableArtists);
+            this.CopyEntries(catalogue.Entries, availableTargets);
 
             while (availableArtists.Count > 0)
             {
